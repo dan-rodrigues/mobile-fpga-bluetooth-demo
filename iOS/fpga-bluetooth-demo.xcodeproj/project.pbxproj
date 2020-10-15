@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4615F94B25396E3B0082A91C /* FPGABluetoothDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615F94A25396E3B0082A91C /* FPGABluetoothDemo.swift */; };
+		4615F94D25396E3B0082A91C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615F94C25396E3B0082A91C /* ContentView.swift */; };
+		4615F95C25396EC70082A91C /* LEDPeripheralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615F95B25396EC70082A91C /* LEDPeripheralController.swift */; };
+		4615F96125396EE50082A91C /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4615F96025396EE50082A91C /* CoreBluetooth.framework */; };
+		4672C0E72539781B00916242 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4672C0E62539781B00916242 /* ExternalAccessory.framework */; };
+		4672C0F425397D3B00916242 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672C0F325397D3B00916242 /* AppContext.swift */; };
+		467B5C3A253D6327004EB4E7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 467B5C3C253D6327004EB4E7 /* Localizable.strings */; };
+		46A2911B253D25D40010B483 /* Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A2911A253D25D40010B483 /* Combine.framework */; };
+		46A2911D253D25DA0010B483 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A2911C253D25DA0010B483 /* SwiftUI.framework */; };
+		46A29122253D293F0010B483 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A29121253D293F0010B483 /* ContentViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4615F94725396E3B0082A91C /* FPGABluetoothDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FPGABluetoothDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4615F94A25396E3B0082A91C /* FPGABluetoothDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPGABluetoothDemo.swift; sourceTree = "<group>"; };
+		4615F94C25396E3B0082A91C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4615F95325396E3E0082A91C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4615F95B25396EC70082A91C /* LEDPeripheralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDPeripheralController.swift; sourceTree = "<group>"; };
+		4615F96025396EE50082A91C /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		4672C0E62539781B00916242 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		4672C0F325397D3B00916242 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		467B5C3B253D6327004EB4E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		46A2911A253D25D40010B483 /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = System/Library/Frameworks/Combine.framework; sourceTree = SDKROOT; };
+		46A2911C253D25DA0010B483 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		46A29121253D293F0010B483 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4615F94425396E3B0082A91C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46A2911D253D25DA0010B483 /* SwiftUI.framework in Frameworks */,
+				4672C0E72539781B00916242 /* ExternalAccessory.framework in Frameworks */,
+				46A2911B253D25D40010B483 /* Combine.framework in Frameworks */,
+				4615F96125396EE50082A91C /* CoreBluetooth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4615F93E25396E3B0082A91C = {
+			isa = PBXGroup;
+			children = (
+				4615F94925396E3B0082A91C /* fpga-bluetooth-demo */,
+				4615F94825396E3B0082A91C /* Products */,
+				4615F95F25396EE50082A91C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4615F94825396E3B0082A91C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4615F94725396E3B0082A91C /* FPGABluetoothDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4615F94925396E3B0082A91C /* fpga-bluetooth-demo */ = {
+			isa = PBXGroup;
+			children = (
+				4615F95B25396EC70082A91C /* LEDPeripheralController.swift */,
+				4615F94A25396E3B0082A91C /* FPGABluetoothDemo.swift */,
+				4672C0F325397D3B00916242 /* AppContext.swift */,
+				4615F94C25396E3B0082A91C /* ContentView.swift */,
+				4615F95325396E3E0082A91C /* Info.plist */,
+				467B5C3C253D6327004EB4E7 /* Localizable.strings */,
+				46A29121253D293F0010B483 /* ContentViewModel.swift */,
+			);
+			path = "fpga-bluetooth-demo";
+			sourceTree = "<group>";
+		};
+		4615F95F25396EE50082A91C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46A2911C253D25DA0010B483 /* SwiftUI.framework */,
+				46A2911A253D25D40010B483 /* Combine.framework */,
+				4672C0E62539781B00916242 /* ExternalAccessory.framework */,
+				4615F96025396EE50082A91C /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4615F94625396E3B0082A91C /* iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4615F95625396E3E0082A91C /* Build configuration list for PBXNativeTarget "iOS" */;
+			buildPhases = (
+				4615F94325396E3B0082A91C /* Sources */,
+				4615F94425396E3B0082A91C /* Frameworks */,
+				4615F94525396E3B0082A91C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOS;
+			productName = "ulx3s-bluetooth-app";
+			productReference = 4615F94725396E3B0082A91C /* FPGABluetoothDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4615F93F25396E3B0082A91C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					4615F94625396E3B0082A91C = {
+						CreatedOnToolsVersion = 12.0;
+					};
+				};
+			};
+			buildConfigurationList = 4615F94225396E3B0082A91C /* Build configuration list for PBXProject "fpga-bluetooth-demo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4615F93E25396E3B0082A91C;
+			productRefGroup = 4615F94825396E3B0082A91C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4615F94625396E3B0082A91C /* iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4615F94525396E3B0082A91C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				467B5C3A253D6327004EB4E7 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4615F94325396E3B0082A91C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4672C0F425397D3B00916242 /* AppContext.swift in Sources */,
+				4615F95C25396EC70082A91C /* LEDPeripheralController.swift in Sources */,
+				4615F94D25396E3B0082A91C /* ContentView.swift in Sources */,
+				4615F94B25396E3B0082A91C /* FPGABluetoothDemo.swift in Sources */,
+				46A29122253D293F0010B483 /* ContentViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		467B5C3C253D6327004EB4E7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				467B5C3B253D6327004EB4E7 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4615F95425396E3E0082A91C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "fpga-bluetooth-demo/fpga-bluetooth-demo.entitlements";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.drr.fpga-bluetooth-demo";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4615F95525396E3E0082A91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "fpga-bluetooth-demo/fpga-bluetooth-demo.entitlements";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.drr.fpga-bluetooth-demo";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4615F95725396E3E0082A91C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "fpga-bluetooth-demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.danrr.fpga-bluetooth-demo";
+				PRODUCT_NAME = FPGABluetoothDemo;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4615F95825396E3E0082A91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "fpga-bluetooth-demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = FPGABluetoothDemo;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4615F94225396E3B0082A91C /* Build configuration list for PBXProject "fpga-bluetooth-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4615F95425396E3E0082A91C /* Debug */,
+				4615F95525396E3E0082A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4615F95625396E3E0082A91C /* Build configuration list for PBXNativeTarget "iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4615F95725396E3E0082A91C /* Debug */,
+				4615F95825396E3E0082A91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4615F93F25396E3B0082A91C /* Project object */;
+}

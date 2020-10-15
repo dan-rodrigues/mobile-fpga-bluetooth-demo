@@ -1,0 +1,11 @@
+"Scan" = "Scan";
+"Set all" = "Set all";
+"Clear all" = "Clear all";
+
+"Ready to scan" = "Ready to scan";
+"Bluetooth is disabled" = "Bluetooth is disabled";
+"Bluetooth in unknown state" = "Bluetooth in unknown state";
+"App not authorized to use Bluetooth" = "App not authorized to use Bluetooth";
+"Connected" = "Connected";
+"Connecting..." = "Connecting...";
+"Scanning..." = "Scanning...";
