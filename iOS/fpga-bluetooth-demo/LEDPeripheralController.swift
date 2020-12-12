@@ -58,7 +58,7 @@ final class LEDPeripheralController:
     @Published var state: State = .unknown
 
     private var currentLEDBits: UInt8 {
-        guard case let .connected(connection) = self.state else { return 0 }
+        guard case let .connected(connection) = state else { return 0 }
 
         return connection.ledStates.reduce(0) { bits, led in
             switch led {
@@ -81,24 +81,24 @@ final class LEDPeripheralController:
     }
 
     func scan() {
-        guard self.state == .readyToConnect else { return }
+        guard state == .readyToConnect else { return }
 
-        self.manager.scanForPeripherals(withServices: [Service.ledService.uuid], options: nil)
-        self.state = .scanning
+        manager.scanForPeripherals(withServices: [Service.ledService.uuid], options: nil)
+        state = .scanning
     }
 
-    func setLEDState(_ state: UInt8) {
-        guard case let .connected(connection) = self.state else { return }
+    func setLEDState(_ ledBits: UInt8) {
+        guard case let .connected(connection) = state else { return }
 
         connection.peripheral.writeValue(
-            Data([state]),
+            Data([ledBits]),
             for: connection.writeCharacteristic,
             type: .withResponse
         )
     }
 
     func refresh() {
-        guard case let .connected(connection) = self.state else { return }
+        guard case let .connected(connection) = state else { return }
 
         // _IRQ_GATTS_READ_REQUEST is apparently not supported on ESP32
         // If it were, readValue() would be used here instead of the write->notify loop
@@ -106,28 +106,28 @@ final class LEDPeripheralController:
         //
         // connection.peripheral.readValue(for: connection.readCharacteristic)
 
-        connection.peripheral.writeValue(Data([self.currentLEDBits]), for: connection.writeCharacteristic, type: .withResponse)
+        connection.peripheral.writeValue(Data([currentLEDBits]), for: connection.writeCharacteristic, type: .withResponse)
     }
 
     func toggleLED(at index: Int) {
-        precondition(index < self.ledCount)
+        precondition(index < ledCount)
 
-        guard case let .connected(connection) = self.state else { return }
-        guard connection.ledStates.count == self.ledCount else { return }
+        guard case let .connected(connection) = state else { return }
+        guard connection.ledStates.count == ledCount else { return }
         guard case .determined = connection.ledStates[index] else { return }
 
-        let updatedBits = self.currentLEDBits ^ (1 << index);
+        let updatedBits = currentLEDBits ^ (1 << index);
 
         // A toggled LED is in an indeterminate state until the peripheral replies
         var leds = connection.ledStates
         leds[index] = .indeterminate
 
-        self.setLEDState(updatedBits)
+        setLEDState(updatedBits)
     }
 
     private func connect(to peripheral: CBPeripheral) {
-        self.state = .connecting(peripheral)
-        self.manager.connect(peripheral, options: nil)
+        state = .connecting(peripheral)
+        manager.connect(peripheral, options: nil)
     }
 
     private func didSucceed(accordingTo error: Error?, task attemptedTask: String) -> Bool {
@@ -145,11 +145,11 @@ final class LEDPeripheralController:
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         let newState = central.state
 
-        switch (self.state, newState) {
+        switch (state, newState) {
         case (.connected, .poweredOn), (.connected, .unknown):
             break
         default:
-            self.state = newState.connectionState
+            state = newState.connectionState
         }
     }
 
@@ -157,14 +157,14 @@ final class LEDPeripheralController:
         os_log("Discovered peripheral with data: %@", advertisementData)
 
         central.stopScan()
-        self.connect(to: peripheral)
+        connect(to: peripheral)
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         os_log(.error, "Failed to connect with error: %@", error?.localizedDescription ?? "(no error)")
 
         // Simplfy default to retrying the connection regardless of cause
-        self.connect(to: peripheral)
+        connect(to: peripheral)
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -176,13 +176,13 @@ final class LEDPeripheralController:
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         os_log(.error, "Disconnected with error: %@", error?.localizedDescription ?? "(no error)")
-        self.state = central.state.connectionState
+        state = central.state.connectionState
     }
 
     // MARK: CBPeripheralManagerDelegate
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        guard self.didSucceed(accordingTo: error, task: "service discovery") else { return }
+        guard didSucceed(accordingTo: error, task: "service discovery") else { return }
         guard let services = peripheral.services else {
             os_log(.error, "Expected peripheral to have at least one service")
             return
@@ -200,7 +200,7 @@ final class LEDPeripheralController:
             self.manager.cancelPeripheralConnection(peripheral)
         }
 
-        guard self.didSucceed(accordingTo: error, task: "characteristic discovery") else {
+        guard didSucceed(accordingTo: error, task: "characteristic discovery") else {
             failureAction(); return
         }
         guard let readCharacteristic = service.characteristic(modelledBy: .ledRead) else {
@@ -210,17 +210,17 @@ final class LEDPeripheralController:
             failureAction(); return
         }
 
-        self.state = .connected(
+        state = .connected(
             .init(
                 peripheral: peripheral,
                 writeCharacteristic: writeCharacteristic,
                 readCharacteristic: readCharacteristic,
-                ledStates: Array(repeating: .indeterminate, count: self.ledCount)
+                ledStates: Array(repeating: .indeterminate, count: ledCount)
             )
         )
 
         peripheral.setNotifyValue(true, for: readCharacteristic)
-        peripheral.writeValue(Data([self.initialLEDState]), for: writeCharacteristic, type: .withResponse)
+        peripheral.writeValue(Data([initialLEDState]), for: writeCharacteristic, type: .withResponse)
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
@@ -231,18 +231,18 @@ final class LEDPeripheralController:
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        guard self.didSucceed(accordingTo: error, task: "characteristic notifying") else { return }
+        guard didSucceed(accordingTo: error, task: "characteristic notifying") else { return }
         guard let ledBits = characteristic.value?.first else {
             os_log(.error, "Expected characterisic to have a value")
             return
         }
-        guard case var .connected(connection) = self.state else { return }
+        guard case var .connected(connection) = state else { return }
 
-        connection.ledStates = (0..<self.ledCount).map { shift in
+        connection.ledStates = (0..<ledCount).map { shift in
             .determined(lit: ((ledBits >> shift) & 1) != 0)
         }
 
-        self.state = .connected(connection)
+        state = .connected(connection)
 
         os_log("Characteristic value updated: %d", ledBits)
     }
@@ -259,7 +259,7 @@ private struct Service {
     let characteristics: [Characteristic]
 
     var allCharacteristicUUIDs: [CBUUID] {
-        return self.characteristics.map { $0.uuid }
+        return characteristics.map { $0.uuid }
     }
 }
 
@@ -285,7 +285,7 @@ private struct Characteristic {
 private extension CBService {
 
     func characteristic(modelledBy model: Characteristic) -> CBCharacteristic? {
-        let characteristic = self.characteristics?.first { characteristic in
+        let characteristic = characteristics?.first { characteristic in
             characteristic.uuid == model.uuid &&
             characteristic.properties.isSuperset(of: model.expectedProperties)
         }

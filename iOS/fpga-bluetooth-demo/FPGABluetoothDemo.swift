@@ -14,11 +14,11 @@ struct FPGABluetoothDemo: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: self.appContext.viewModel)
+            ContentView(viewModel: appContext.viewModel)
         }
-        .onChange(of: self.scenePhase) { phase in
+        .onChange(of: scenePhase) { phase in
             if phase == .active {
-                self.appContext.appBecameActive()
+                appContext.appBecameActive()
             }
         }
     }

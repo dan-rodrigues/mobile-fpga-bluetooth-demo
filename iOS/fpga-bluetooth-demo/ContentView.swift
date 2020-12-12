@@ -16,23 +16,23 @@ struct ContentView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 16) {
-            Text(self.viewModel.title)
+            Text(viewModel.title)
                 .padding()
             HStack {
-                ForEach(self.viewModel.ledViewModels) { led in
+                ForEach(viewModel.ledViewModels) { led in
                     LEDView(color: led.color, filled: led.lit)
                         .onTapGesture {
-                            self.viewModel.ledToggleHandler(led.id)
+                            viewModel.ledToggleHandler(led.id)
                         }
                 }
             }
             .frame(height: 96, alignment: .center)
-            Button("Scan", action: self.viewModel.scanHandler)
-                .disabled(!self.viewModel.scanEnabled)
-            Button("Set all", action: self.viewModel.setAllHandler)
-                .disabled(!self.viewModel.connectedActionsEnabled)
-            Button("Clear all", action: self.viewModel.clearAllHandler)
-                .disabled(!self.viewModel.connectedActionsEnabled)
+            Button("Scan", action: viewModel.scanHandler)
+                .disabled(!viewModel.scanEnabled)
+            Button("Set all", action: viewModel.setAllHandler)
+                .disabled(!viewModel.connectedActionsEnabled)
+            Button("Clear all", action: viewModel.clearAllHandler)
+                .disabled(!viewModel.connectedActionsEnabled)
         }
     }
 }
@@ -48,7 +48,7 @@ private struct LEDView: View {
     }
 
     var body: some View {
-        Color(self.filled ? self.color : UIColor.systemBackground)
+        Color(filled ? color : UIColor.systemBackground)
             .border(Color(UIColor.systemGray), width: 2)
     }
 }

@@ -27,7 +27,7 @@ final class AppContext: ObservableObject {
     init(peripheralController: LEDPeripheralController = .init()) {
         self.peripheralController = peripheralController
 
-        self.peripheralController.$state
+        peripheralController.$state
             .map { state in
                 ContentViewModel(
                     title: state.title,
@@ -50,11 +50,11 @@ final class AppContext: ObservableObject {
             }
             .eraseToAnyPublisher()
             .assign(to: \.viewModel, on: self)
-            .store(in: &self.cancellables)
+            .store(in: &cancellables)
     }
 
     func appBecameActive() {
-        self.peripheralController.refresh()
+        peripheralController.refresh()
     }
 }
 
